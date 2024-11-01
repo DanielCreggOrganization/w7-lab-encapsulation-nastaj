@@ -8,6 +8,9 @@
 5. [Business Logic Methods](#5-business-logic-methods)
 6. [Advanced Encapsulation Patterns](#6-advanced-encapsulation-patterns)
 
+## Lab Setup
+Create a package called `ie.atu.encapsulation`. Place all the below classes into this package.
+
 ## 1. Basic Data Hiding
 
 ### Learning Objective
