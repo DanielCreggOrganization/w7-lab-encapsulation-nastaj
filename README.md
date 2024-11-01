@@ -43,10 +43,12 @@ graph TD
 ```
 
 ### DIY Exercise: Secret Message
-Create a `SecretMessage` class that:
-- Has a private String field to store a message
-- Has a method to display the message
-- Does NOT allow direct access to the message field
+Create a `SecretMessage` class that:  
+- Has a private String field to store a message. 
+- Has a public method to display the message
+- Create a `Secret Message` object in the `Main` class
+- Try and call the message field directly using the dot operator
+- Print the message to the console using the public method
 
 ## 2. Getters and Setters
 
