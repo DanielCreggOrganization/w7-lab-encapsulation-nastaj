@@ -92,12 +92,12 @@ Create a `Temperature` class that:
 ## 3. Data Validation
 
 ### Learning Objective
-Learn how to validate data in setter methods to maintain data integrity.
+Learn how to validate data in setter methods to maintain data integrity and implement reusable validation using helper methods.
 
 ### Explanation
-Data validation is crucial for maintaining the integrity and reliability of our objects' state. By validating input before allowing changes to our private fields, we can prevent invalid states and ensure our objects behave correctly. Proper validation in setters helps catch errors early and provides clear feedback about what went wrong.
+Data validation is crucial for maintaining the integrity and reliability of our objects' state. By validating input before allowing changes to our private fields, we can prevent invalid states and ensure our objects behave correctly. Proper validation in setters helps catch errors early and provides clear feedback about what went wrong. To avoid duplicating validation logic between constructors and setters, we can extract common validation rules into private helper methods.
 
-### Example
+### Example 1: Basic Validation
 ```java
 public class BankAccount {
     private double balance;
@@ -125,20 +125,100 @@ public class BankAccount {
 }
 ```
 
+### Example 2: Using Validation Helpers
+```java
+public class Student {
+    private String name;
+    private int age;
+
+    // Constructor uses validation helpers
+    public Student(String name, int age) {
+        this.name = validateName(name);
+        this.age = validateAge(age);
+    }
+
+    // Setters use the same validation helpers
+    public void setName(String name) {
+        this.name = validateName(name);
+    }
+
+    public void setAge(int age) {
+        this.age = validateAge(age);
+    }
+
+    // Private validation helper methods
+    private String validateName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
+        return name;
+    }
+
+    private int validateAge(int age) {
+        if (age < 0 || age > 150) {
+            throw new IllegalArgumentException("Invalid age");
+        }
+        return age;
+    }
+}
+```
+```
+
 ### Visual Representation
 ```mermaid
 flowchart TD
-    A[Input Data] -->|Validation| B{Valid?}
+    subgraph "Basic Validation"
+    A[Input Data] -->|Validate| B{Valid?}
     B -->|Yes| C[Update Field]
     B -->|No| D[Throw Exception]
+    end
+    
+    subgraph "Helper Method Approach"
+    E[Constructor/Setter] -->|Call| F[Validation Helper]
+    F -->|Return Valid Data| G[Update Field]
+    F -->|Throw Exception| H[Invalid Data]
+    end
 ```
 
 ### DIY Exercise: Grade Book
 Create a `Grade` class that:
-- Stores a numeric grade (0-100)
-- Validates that grades are within valid range
-- Throws an exception for invalid grades
-- Provides a method to get the letter grade (A: 90-100, B: 80-89, etc.)
+1. Has these private fields:
+   - studentName (String)
+   - numericGrade (int)
+   - courseCode (String)
+
+2. Implements these validation helper methods:
+   - validateStudentName(String name)
+   - validateGrade(int grade)
+   - validateCourseCode(String code)
+
+3. Uses the helpers in both:
+   - Constructor
+   - Setter methods
+
+4. Implements these features:
+   - Validates that grades are within range (0-100)
+   - Validates that student name is not empty
+   - Validates that course code matches pattern (e.g., "CS101")
+   - Provides a method to get the letter grade (A: 90-100, B: 80-89, etc.)
+   - Throws appropriate exceptions with meaningful messages for invalid input
+
+Example structure:
+```java
+public class Grade {
+    private String studentName;
+    private int numericGrade;
+    private String courseCode;
+
+    // TODO: Add constructor
+
+    // TODO: Add getters and setters
+
+    // TODO: Add validation helper methods
+
+    // TODO: Add method to calculate letter grade
+}
+```
 
 ## 4. Constructors and Initialization
 
