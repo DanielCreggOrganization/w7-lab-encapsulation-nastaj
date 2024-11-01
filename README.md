@@ -162,22 +162,17 @@ public class Student {
     }
 }
 ```
-```
 
 ### Visual Representation
 ```mermaid
-flowchart TD
-    subgraph "Basic Validation"
+graph TD
     A[Input Data] -->|Validate| B{Valid?}
     B -->|Yes| C[Update Field]
     B -->|No| D[Throw Exception]
-    end
     
-    subgraph "Helper Method Approach"
-    E[Constructor/Setter] -->|Call| F[Validation Helper]
-    F -->|Return Valid Data| G[Update Field]
-    F -->|Throw Exception| H[Invalid Data]
-    end
+    E[Constructor/Setter] -->|Uses| F[Validation Helper]
+    F -->|Valid| G[Update Field]
+    F -->|Invalid| H[Throw Exception]
 ```
 
 ### DIY Exercise: Grade Book
