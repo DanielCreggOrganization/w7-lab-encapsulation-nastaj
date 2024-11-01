@@ -6,7 +6,6 @@
 3. [Data Validation](#3-data-validation)
 4. [Constructors and Initialization](#4-constructors-and-initialization)
 5. [Business Logic Methods](#5-business-logic-methods)
-6. [Advanced Encapsulation Patterns](#6-advanced-encapsulation-patterns)
 
 ## Lab Setup
 Create a package called `ie.atu.encapsulation`. Create a `Main` class inside this package. Place all the below classes from the DIY sections into this package. 
@@ -267,80 +266,7 @@ Create an `Account` class that:
 - Provides account statement generation
 - Tracks and limits daily transactions
 
-## 6. Advanced Encapsulation Patterns
 
-### Learning Objective
-Learn advanced patterns for encapsulation including immutable objects and builder pattern.
-
-### Explanation
-Advanced encapsulation patterns provide additional ways to ensure object integrity and thread safety. Immutable objects are particularly useful as they guarantee that an object's state cannot be changed after creation, making them inherently thread-safe. The Builder pattern provides a flexible way to construct complex objects while maintaining encapsulation and validation.
-
-### Example
-```java
-public final class ImmutablePerson {
-    private final String name;
-    private final int age;
-    private final List<String> hobbies;
-    
-    private ImmutablePerson(Builder builder) {
-        this.name = builder.name;
-        this.age = builder.age;
-        this.hobbies = List.copyOf(builder.hobbies);
-    }
-    
-    public String getName() { return name; }
-    public int getAge() { return age; }
-    public List<String> getHobbies() { return List.copyOf(hobbies); }
-    
-    public static class Builder {
-        private String name;
-        private int age;
-        private List<String> hobbies = new ArrayList<>();
-        
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-        
-        public Builder age(int age) {
-            this.age = age;
-            return this;
-        }
-        
-        public Builder addHobby(String hobby) {
-            this.hobbies.add(hobby);
-            return this;
-        }
-        
-        public ImmutablePerson build() {
-            if (name == null || name.trim().isEmpty()) {
-                throw new IllegalStateException("Name is required");
-            }
-            if (age < 0) {
-                throw new IllegalStateException("Age cannot be negative");
-            }
-            return new ImmutablePerson(this);
-        }
-    }
-}
-```
-
-### Visual Representation
-```mermaid
-graph TD
-    A[Builder] -->|Constructs| B[Immutable Object]
-    C[External Code] -->|Can Modify| A
-    C -->|Cannot Modify| B
-    B -->|Returns Copies| C
-```
-
-### DIY Exercise: Configuration Manager
-Create an immutable `Configuration` class that:
-- Stores application settings (server URL, port, timeout, etc.)
-- Uses the Builder pattern for construction
-- Validates all settings during build
-- Prevents any modification after creation
-- Provides deep copies of any complex objects
 
 ## Summary
 This lab covered the essential concepts of encapsulation in Java:
@@ -349,7 +275,6 @@ This lab covered the essential concepts of encapsulation in Java:
 3. Data validation for maintaining integrity
 4. Proper initialization with constructors
 5. Business logic methods for operations
-6. Advanced patterns for robust encapsulation
 
 ## Further Reading
 - Java Documentation: [Access Control](https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
