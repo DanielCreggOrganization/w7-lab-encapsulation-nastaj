@@ -9,7 +9,7 @@
 6. [Advanced Encapsulation Patterns](#6-advanced-encapsulation-patterns)
 
 ## Lab Setup
-Create a package called `ie.atu.encapsulation`. Create a ``Main` class inside this package. Place all the below classes from the DIY sections into this package. 
+Create a package called `ie.atu.encapsulation`. Create a `Main` class inside this package. Place all the below classes from the DIY sections into this package. 
 
 ## 1. Basic Data Hiding
 
