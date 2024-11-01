@@ -1,0 +1,19 @@
+{
+    // The name of the dev container configuration
+    "name": "Java",
+    // The base image to use for the development container
+    "image": "mcr.microsoft.com/devcontainers/java:latest",
+    // Customizations for the development environment
+    "customizations": {
+      // Visual Studio Code-specific settings
+      "vscode": {
+        // List of extensions to install in the container
+        "extensions": [
+          "redhat.java", // Language Support for Java(TM) by Red Hat
+          "vscjava.vscode-java-debug", // Debugger for Java
+          "vscjava.vscode-java-dependency", // Project Manager for Java
+          "VisualStudioExptTeam.vscodeintellicode" // Visual Studio IntelliCode
+        ]
+      }
+    }
+  }
